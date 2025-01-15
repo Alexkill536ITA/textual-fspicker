@@ -26,7 +26,7 @@ class SelectDirectory(FileSystemPickerScreen):
 
     DEFAULT_CSS = """
     SelectDirectory > Dialog > InputBar > Label {
-        width: 1fr;
+        width: 100%;
         border: tall $background;
         padding-left: 1;
         padding-right: 1;
@@ -62,7 +62,7 @@ class SelectDirectory(FileSystemPickerScreen):
         """
         current_selection = self.query_one("InputBar > Label", Label)
         # TODO: A nicer way of indicating we're looking at just the tail.
-        current_selection.update(str(location)[-current_selection.size.width :])
+        current_selection.update(str(location.absolute()))
 
     @on(DirectoryNavigation.Changed)
     def _show_selected(self, event: DirectoryNavigation.Changed) -> None:

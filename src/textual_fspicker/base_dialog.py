@@ -46,10 +46,10 @@ class FileSystemPickerScreen(ModalScreen[Optional[Path]]):
     FileSystemPickerScreen Dialog {
         width: 80%;
         height: 80%;
-        border: $border;
-        background: $panel;
+        border: panel $panel-lighten-2;
+        background: $panel-lighten-1;
         border-title-color: $text;
-        border-title-background: $panel;
+        border-title-background: $panel-lighten-2;
         border-subtitle-color: $text;
         border-subtitle-background: $error;
 
@@ -115,8 +115,8 @@ class FileSystemPickerScreen(ModalScreen[Optional[Path]]):
                 yield DirectoryNavigation(self._location)
             with InputBar():
                 yield from self._input_bar()
-                yield Button(self._select_button, id="select")
-                yield Button("Cancel", id="cancel")
+                yield Button("Cancel", id="cancel", variant="error")
+                yield Button(self._select_button, id="select", variant="primary")
 
     def on_mount(self) -> None:
         """Focus directory widget on mount."""
